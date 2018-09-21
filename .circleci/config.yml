@@ -39,7 +39,7 @@ jobs:
           when: on_fail
           command: |
             if [ ${CIRCLE_BRANCH} -eq "master" ] || [ ${CIRCLE_BRANCH} -eq "scheduled_e2e_testing"] ; then
-              curl -X POST -H 'Content-type: application/json' --data '{"text":"Failed: build <${CIRCLE_BUILD_URL>|#${CIRCLE_BUILD_NUM}> in ${CIRCLE_PROJECT_REPONAME} ${CIRCLE_BRANCH}"}' ${SLACK_CHANNEL_ALERT_LIBRARIES_LOW_WEBHOOK_URL}
+              curl -X POST -H 'Content-type: application/json' --data '{"text":"Failed: build <${CIRCLE_BUILD_URL>|#${CIRCLE_BUILD_NUM}> in ${CIRCLE_PROJECT_REPONAME} ${CIRCLE_BRANCH}:<${CIRCLE_REPOSITORY_URL>/commits/${CIRCLE_SHA1}|${CIRCLE_SHA1}>"}' ${SLACK_CHANNEL_ALERT_LIBRARIES_LOW_WEBHOOK_URL}
             fi
       - save_cache:
           paths:
